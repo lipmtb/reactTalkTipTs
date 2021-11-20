@@ -1,20 +1,30 @@
+import {SUCCESSLOGIN,CLEARLOGIN} from "../actionType"
+
 type JcAction={
     type:string,
     data:object
 }
 
-export function setLoginSuccessAction(action:JcAction):JcAction{
+export function setLoginSuccessAction(data:object):JcAction{
 
     return {
-        type:"",
-        data:{}
+        type:SUCCESSLOGIN,
+        data:data
     }
 }
 
 
-export function toLoginAction(action:JcAction):void{
+export function toLoginAction():void{
   return undefined;
 }
 
+
+export function clearLoginAction(data:object):JcAction{
+    return {
+        type:CLEARLOGIN,
+        data:data
+  }
+}
+  
 
 

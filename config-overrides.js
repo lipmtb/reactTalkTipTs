@@ -15,7 +15,8 @@ module.exports = override(
     ["assets"]:resolve("src/assets"),
     ["jjccredux"]:resolve("src/jjccredux"),
     ["hoc"]:resolve("src/component/common/hoc"),
-    ["hooks"]:resolve("src/component/common/hooks")
+    ["hooks"]:resolve("src/component/common/hooks"),
+    ["routes"]:resolve("src/routes")
   })
 );
 

@@ -1,15 +1,11 @@
 import  { Component } from 'react';
-import { Route,Switch } from 'react-router-dom';
-import LoginPage from './views/login';
-import HomePage from './views/home';
+
+import HasLoginProvider from './component/container/HasLoginProvider'; //登录权限控制分配
   class App extends Component {
     render() {
       return (
         <div className="App">
-          <Switch>  
-              <Route path="/login" component={LoginPage}/>
-              <Route path="/" component={HomePage}/>
-          </Switch>
+          <HasLoginProvider/>
         </div>
       );
     }
