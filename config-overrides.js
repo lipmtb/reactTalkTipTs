@@ -1,4 +1,4 @@
-const { override, fixBabelImports,addWebpackAlias } = require('customize-cra');
+const { override, fixBabelImports,addWebpackAlias,addLessLoader } = require('customize-cra');
 const { resolve } = require('path');
 
 module.exports = override(
@@ -8,15 +8,25 @@ module.exports = override(
     style: 'css',
    }),
    addWebpackAlias({
-    ['@']:resolve("src"),
-    ["views"]:resolve("src/views"),
-    ["component"]:resolve("src/component"),
-    ["network"]:resolve("src/network"),
-    ["assets"]:resolve("src/assets"),
-    ["jjccredux"]:resolve("src/jjccredux"),
-    ["hoc"]:resolve("src/component/common/hoc"),
-    ["hooks"]:resolve("src/component/common/hooks"),
-    ["routes"]:resolve("src/routes")
+    ['@']:resolve(__dirname,"./src"),
+    ["views"]:resolve(__dirname,"./src/views"),
+    ["component"]:resolve(__dirname,"./src/component"),
+    ["network"]:resolve(__dirname,"./src/network"),
+    ["assets"]:resolve(__dirname,"./src/assets"),
+    ["jjccredux"]:resolve(__dirname,"./src/jjccredux"),
+    ["hoc"]:resolve(__dirname,"./src/component/common/hoc"),
+    ["hooks"]:resolve(__dirname,"./src/component/common/hooks"),
+    ["routes"]:resolve(__dirname,"./src/routes")
+  }),
+  addLessLoader({
+    lessOptions: {
+      strictMath: true,
+      noIeCompat: true,
+      loader: "css-loader",
+      modules: {
+        localIdentName: "[name]__[local]___[hash:base64:5]",
+      }
+    }
   })
 );
 

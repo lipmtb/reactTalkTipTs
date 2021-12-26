@@ -1,26 +1,26 @@
 //用户信息
-interface userInfo{
-    userName:string,
-    userId:string,
-    token:string
+interface userInfoState {
+    userName: string;
+    userId: string;
+    jjccToken: string;
 }
 
 
 
-interface actionType{
-    type:string,
-    data:userInfo
+interface actionType {
+    type: string;
+    data: object;
 }
 
 
 // 根state
 interface MyStoreState {
-    user:userInfo
-   
+    user: userInfoState
+
 }
 
-export type{
+export type {
     MyStoreState,
-    userInfo,
+    userInfoState,
     actionType
 }

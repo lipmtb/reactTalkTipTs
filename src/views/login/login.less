@@ -1,0 +1,145 @@
+form.loginreg-page {
+    perspective: 800px;
+    width      : 600px;
+    margin     : 80px auto;
+    border     : 1px solid #eee;
+    padding    : 20px;
+
+    .ant-row {
+        margin: 50px 0;
+    }
+}
+
+//错误信息
+.login-reg-index {
+
+    .ant-tabs-nav-container,
+    .ant-tabs-nav-scroll,
+    .ant-tabs-nav-wrap {
+        overflow: visible;
+    }
+
+
+    // 注册错误
+    .reg-tab-item {
+
+
+        .error-top-text {
+            transform-style: preserve-3d;
+            position       : absolute;
+            left           : 50%;
+            top            : 42px;
+            color          : #f00;
+
+            transform    : translateX(-50%);
+            padding      : 6px 20px;
+            border-radius: 2px;
+
+            text-align         : center;
+            transform-origin   : center;
+            // transition      : max-width 2s linear, opacity 1s;
+
+
+        }
+
+        .animateSlideDown.error-top-text {
+            animation          : slideDownAnimation 3000ms ease-in 0s;
+            animation-direction: normal;
+            background-color   : rgba(242, 255, 59, 0.747);
+            box-shadow         : 1px 1px 6px 1px #eee;
+        }
+    }
+
+}
+
+@keyframes regErrorAnimation {
+    0% {
+        width  : calc(100%);
+        padding: 6px 20px;
+    }
+
+    20% {
+        width  : calc(150%);
+        padding: 10px 40px;
+    }
+
+    40% {
+        width  : calc(100%);
+        padding: 6px 20px;
+    }
+
+    60% {
+        width  : calc(60%);
+        padding: 2px 5px;
+    }
+
+    80% {
+        width  : calc(40%);
+        padding: 1px 2px;
+    }
+
+    100% {
+        width  : calc(0%);
+        padding: 0;
+    }
+
+}
+
+@keyframes slideDownAnimation {
+    0% {
+        top      : 42px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+    6% {
+        top      : 56px;
+        transform: translateX(-50%) scaleX(3) rotateY(-60deg);
+    }
+
+    8% {
+        top      : 66px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+    10% {
+        top      : 76px;
+        transform: translateX(-50%) scaleX(2) rotateY(60deg);
+    }
+
+    20% {
+        top      : 77px;
+        transform: translateX(-50%) scaleX(1) rotateY(30deg);
+    }
+
+    30% {
+        top      : 80px;
+        transform: translateX(-50%) scaleX(1.2) rotateY(0deg);
+    }
+
+    40% {
+        top      : 80px;
+        transform: translateX(-50%) scaleX(0.8) rotateY(-10deg);
+    }
+
+    50% {
+        top      : 80px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+    90% {
+        top      : 80px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+    96% {
+        top      : 60px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+
+    100% {
+        top      : 42px;
+        transform: translateX(-50%) scaleX(1) rotateY(0deg);
+    }
+
+}
