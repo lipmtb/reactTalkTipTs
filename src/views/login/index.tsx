@@ -4,7 +4,7 @@ import { Form, Input, Icon, Tabs, Button, Modal } from "antd";
 
 import { FormComponentProps } from 'antd/es/form';
 
-import { RouteComponentProps, useHistory } from "react-router-dom";
+import { RouteComponentProps, useHistory, useLocation } from "react-router-dom";
 import { loginRequest, RegParms, registRequest, ResponseLoginProps } from "../../network/loginReg/loginReg";
 import { AxiosResponse } from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import { SUCCESSLOGIN } from "../../jjccredux/actionType";
 import { MyStoreState } from "../../jjccredux/interface";
 import { setLoginSuccessAction } from "../../jjccredux/actions/loginAction";
 import { AppContext } from "../../App";
+import querystring from "querystring";
 import "./login.less";
 const { TabPane } = Tabs;
 
@@ -31,6 +32,7 @@ const LoginCpn: FC<LoginRegProps & RouteComponentProps> = (props: LoginRegProps 
     const { form: { getFieldDecorator, getFieldValue, validateFieldsAndScroll } } = props;
     const dispatchFn = useDispatch();
     const historyGo = useHistory();
+    const location = useLocation();
     const userInfoState = useSelector((state: MyStoreState) => state.user);
     const [regErrMsg, setRegError] = useState("");
 
@@ -193,17 +195,28 @@ const LoginCpn: FC<LoginRegProps & RouteComponentProps> = (props: LoginRegProps 
 
     useEffect(() => {
         if (userInfoState && userInfoState.jjccToken) {
-            console.log("loginuserEffect");
             setTimeout(() => {
 
                 // props.history.push("/home");
-                historyGo.push("/home");
+
+                let searchstr = location.search.slice(1);
+
+                let qsRes = querystring.parse(searchstr, "&", "=");
+                console.log("querystringquerystring", qsRes);
+                if (location && qsRes.redirectUrl) {
+                    console.log("useloation", qsRes.redirectUrl);
+                    historyGo.push("/" + qsRes.redirectUrl);
+                } else {
+
+                    historyGo.push("/home");
+                }
+
             }, 3000)
         }
-    }, [userInfoState, historyGo])
+    }, [userInfoState, historyGo, location])
 
     if (userInfoState && userInfoState.jjccToken) {
-        return <h2 style={{ color: "#008c8c" }}>登录中..........</h2>
+        return <h2 style={{ color: "#008c8c", margin: '0 auto', width: '20%' }}>登录中..........</h2>
     }
     return (
         <div className='login-reg-index'>

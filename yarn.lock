@@ -1856,12 +1856,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/history@*":
-  version "4.7.9"
-  resolved "https://registry.nlark.com/@types/history/download/@types/history-4.7.9.tgz?cache=0&sync_timestamp=1629708135016&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fhistory%2Fdownload%2F%40types%2Fhistory-4.7.9.tgz"
-  integrity sha1-HPttYO84IsWJ8Y5w+LEvmijOhyQ=
-
-"@types/history@^4.7.9":
+"@types/history@*", "@types/history@^4.7.9":
   version "4.7.9"
   resolved "https://registry.npmmirror.com/@types/history/download/@types/history-4.7.9.tgz#1cfb6d60ef3822c589f18e70f8b12f9a28ce8724"
   integrity sha1-HPttYO84IsWJ8Y5w+LEvmijOhyQ=
@@ -1993,6 +1988,14 @@
 "@types/react-router@*":
   version "5.1.17"
   resolved "https://registry.npmmirror.com/@types/react-router/download/@types/react-router-5.1.17.tgz"
+  integrity sha1-CHCRAGITsRBC85Vw5c1BSGNpOWg=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-router@^5.1.17":
+  version "5.1.17"
+  resolved "https://registry.npmmirror.com/@types/react-router/download/@types/react-router-5.1.17.tgz?cache=0&sync_timestamp=1637281107346&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact-router%2Fdownload%2F%40types%2Freact-router-5.1.17.tgz#087091006213b11042f39570e5cd414863693968"
   integrity sha1-CHCRAGITsRBC85Vw5c1BSGNpOWg=
   dependencies:
     "@types/history" "*"

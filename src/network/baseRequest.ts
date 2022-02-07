@@ -1,11 +1,12 @@
 import axios from "axios";
 // import { useStore } from "react-redux";
 import store from "../jjccredux";
-import { useLocation } from "react-router-dom";
-import { history as historyMe } from "../routes/historyHook";
+import historyMe from "../routes/historyHook";
 import { clearLoginAction } from "../jjccredux/actions/loginAction";
+import { Modal } from "antd";
+export const ServerBaseUrl = "http://localhost:82/";
 const baseAxiosIns = axios.create({
-    baseURL: "http://127.0.0.1:82",
+    baseURL: ServerBaseUrl,
     timeout: 5000
 })
 
@@ -31,9 +32,17 @@ baseAxiosIns.interceptors.response.use((res) => {
         store.dispatch(clearLoginAction({}))
         //重新登录router.history.push('/login?redirectUrl=currentRoute.path')
 
+        Modal.confirm({
+            title: "是否重新登录",
+            onOk: () => {
+                const curPath = window.location.pathname.slice(1);
+                historyMe.push(`/login?redirectUrl=${curPath}`)
+            },
+            onCancel: () => {
+                console.log("取消")
+            }
+        })
 
-        const curPath = useLocation().pathname;
-        historyMe.push(`/login?redirectUrl=${curPath}`)
 
     }
     return Promise.reject(error);

@@ -1,14 +1,14 @@
 import { Suspense } from "react";
-// import { Router, Route, Switch, RouteComponentProps } from "react-router-dom";
-// import { Switch, BrowserRouter } from "react-router-dom";
-import { Switch, Router } from "react-router-dom";
+import { Switch, BrowserRouter, Route } from "react-router-dom";
+
 
 import { AliveScope } from "react-activation";
 import TrackRouteUI from "./TrackRouteUI";
-// import { createBrowserHistory } from "history";
-import   historyMe  from "./historyHook";
+
+// import historyMe from "./historyHook";
 
 import { getRoutes, ItRoute } from "./routeModule";
+import Login from "../views/login";
 
 //所有的路由模块
 const allRoutes = getRoutes();
@@ -16,7 +16,7 @@ const allRoutes = getRoutes();
 
 export default function AppRoutes() {
     return (
-        <Router history={historyMe} >
+        <BrowserRouter>
 
             <AliveScope>
                 <Suspense fallback={<h2>loading23333</h2>}>
@@ -27,10 +27,11 @@ export default function AppRoutes() {
                                 return <TrackRouteUI key={idx + ""} path={path} exact={exact} cache={cache} component={component} {...otherProperties} />
                             })
                         }
+                        <Route path="/login" exact={true} component={Login}></Route>
                     </Switch>
 
                 </Suspense>
             </AliveScope>
-        </Router>
+        </BrowserRouter>
     )
 }

@@ -1,0 +1,112 @@
+ul.config-lists {
+    list-style  : none;
+    padding-left: 0;
+    margin      : 0;
+    display     : flex;
+    flex-wrap   : wrap;
+    width       : 90vw;
+    margin      : 10px auto;
+
+    li.config-item {
+        position    : relative;
+        margin-right: 24px;
+        margin-top  : 6px;
+        width       : 128px;
+        height      : 128px;
+        overflow    : hidden;
+        border      : 1px dotted #eee;
+
+        label {
+            display: block;
+            height : 100%;
+        }
+
+        a.link-img {
+            display   : block;
+            box-sizing: border-box;
+            width     : 128px;
+            height    : 128px;
+
+            text-align         : center;
+            background         : url(../../../../assets/icons.png) no-repeat;
+            background-position: -1248px 34px;
+            transform          : scale(1.4);
+
+            p.config-type-name {
+                position        : absolute;
+                left            : 0;
+                right           : 0;
+                margin          : auto;
+                top             : 20%;
+                background-color: #fff;
+                transform       : scale(0.8);
+            }
+
+            button {
+                position : absolute;
+                transform: scale(0.5);
+                top      : 70%;
+                left     : 42px;
+
+                margin: auto;
+            }
+
+            img.img-prev-item {
+                /* max-width: 100%; */
+                /* max-height: 100%; */
+                position: absolute;
+                left    : 0;
+                width   : 128px;
+                height  : 95px;
+            }
+
+            i.anticon.anticon-minus-square.del-icon {
+                position  : absolute;
+                left      : 0;
+                right     : 0;
+                margin    : auto;
+                z-index   : 2;
+                color     : #f00;
+                transition: top 200ms ease-in;
+                cursor    : pointer;
+             
+            }
+
+            i.anticon.anticon-minus-square.hasupload-delete {
+                position  : absolute;
+                top       : 0;
+                left:0;
+                right:0;
+                margin:auto;
+                transition: top 200ms ease-in;
+                z-index:2;
+                cursor: pointer;
+            }
+
+            &:hover {
+                i.anticon.anticon-minus-square.hasupload-delete {
+
+                    top: 49px;
+
+                }
+            }
+
+            span[class*="-accessory"] {
+                cursor   : pointer;
+                position : absolute;
+                top      : 71%;
+                transform: scale(0.6);
+            }
+
+            span.download-accessory {
+                left: 81px;
+            }
+
+            span.prev-accessory {
+                left: 20px;
+
+            }
+        }
+
+    }
+}

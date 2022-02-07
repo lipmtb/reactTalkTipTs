@@ -1,0 +1,43 @@
+.prev-wrapper {
+    position        : fixed;
+    left            : 0;
+    right           : 0;
+    top             : 0;
+    bottom          : 0;
+    margin          : auto;
+    background-color: rgba(0, 0, 0, 0.911);
+    z-index:999;
+    .main-content {
+        position:absolute;
+        left  : 20%;
+        right : 20%;
+        top   : 10%;
+        bottom: 20%;
+        margin: auto;
+        .main-img{
+          img.img-item-trans{
+            position:absolute;
+             cursor:move;
+             left:0;
+             top:0;
+          }
+        }
+        .bottom-oper{
+            position:fixed;
+            bottom:10px;
+            left:0;
+            right:0;
+            margin:auto;
+            text-align: center;
+            color:#fff; 
+          button{
+            background-color: #000;
+            cursor: pointer;
+            margin:0 10px;
+            &:hover{
+                color:#f00;
+            }
+          }
+        }
+    }
+}
