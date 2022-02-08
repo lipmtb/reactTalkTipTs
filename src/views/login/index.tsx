@@ -13,6 +13,7 @@ import { MyStoreState } from "../../jjccredux/interface";
 import { setLoginSuccessAction } from "../../jjccredux/actions/loginAction";
 import { AppContext } from "../../App";
 import querystring from "querystring";
+import { setBrowserHisAction } from "../../jjccredux/actions/histAction"
 import "./login.less";
 const { TabPane } = Tabs;
 
@@ -55,6 +56,10 @@ const LoginCpn: FC<LoginRegProps & RouteComponentProps> = (props: LoginRegProps 
         }
 
     }, [regErrMsg])
+
+    useEffect(() => {
+        dispatchFn(setBrowserHisAction(props.history));
+    }, [props.history])
 
     //登录校验reducer
     const [loginStatus, dispatchLoginStatus] = useReducer((prevState: object, action: { type: string, value: string }) => {

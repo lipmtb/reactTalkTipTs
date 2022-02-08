@@ -2,7 +2,7 @@ import { SUCCESSLOGIN, CLEARLOGIN } from "../actionType"
 import { loginRequest, RegParms, ResponseLoginProps } from "../../network/loginReg/loginReg";
 import { AxiosResponse } from "axios";
 import { Dispatch } from "redux";
-type JcAction = {
+export type JcAction = {
     type: string,
     data: object
 }

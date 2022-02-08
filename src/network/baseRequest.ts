@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { useStore } from "react-redux";
 import store from "../jjccredux";
-import historyMe from "../routes/historyHook";
+import historyHook from "../routes/historyHook";
 import { clearLoginAction } from "../jjccredux/actions/loginAction";
 import { Modal } from "antd";
 export const ServerBaseUrl = "http://localhost:82/";
@@ -36,7 +36,8 @@ baseAxiosIns.interceptors.response.use((res) => {
             title: "是否重新登录",
             onOk: () => {
                 const curPath = window.location.pathname.slice(1);
-                historyMe.push(`/login?redirectUrl=${curPath}`)
+                const historyMe = store.getState() ? store.getState().hist['historyme'] : historyHook;
+                historyMe && historyMe.push(`/login?redirectUrl=${curPath}`)
             },
             onCancel: () => {
                 console.log("取消")
