@@ -1993,14 +1993,6 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-router@^5.1.17":
-  version "5.1.17"
-  resolved "https://registry.npmmirror.com/@types/react-router/download/@types/react-router-5.1.17.tgz?cache=0&sync_timestamp=1637281107346&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact-router%2Fdownload%2F%40types%2Freact-router-5.1.17.tgz#087091006213b11042f39570e5cd414863693968"
-  integrity sha1-CHCRAGITsRBC85Vw5c1BSGNpOWg=
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-
 "@types/react-slick@^0.23.4":
   version "0.23.7"
   resolved "https://registry.npmmirror.com/@types/react-slick/download/@types/react-slick-0.23.7.tgz#2ef4f42dd0e9be5633502c3563572c7d7584a368"
@@ -5886,10 +5878,10 @@ history@^4.9.0:
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
 
-history@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.npmmirror.com/history/download/history-5.1.0.tgz#2e93c09c064194d38d52ed62afd0afc9d9b01ece"
-  integrity sha1-LpPAnAZBlNONUu1ir9CvydmwHs4=
+history@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npmmirror.com/history/-/history-5.2.0.tgz#7cdd31cf9bac3c5d31f09c231c9928fad0007b7c"
+  integrity sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==
   dependencies:
     "@babel/runtime" "^7.7.6"
 

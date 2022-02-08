@@ -232,6 +232,10 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
 
         }
     }
+
+    const clearPreImgUrl=()=>{
+        setCurPreImgUrl("")
+    }
     return (
         <div className='img-prev-down-wrapper'>
             {/* 已经上传的附件 */}
@@ -275,7 +279,7 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
 
             </li>
             {isUploading && <JJccModal><LoadingProgress loadingState={uploadState} setCurrentUploading={setCurrentUploading}>附件上传中</LoadingProgress></JJccModal>}
-            {curPreImgUrl && <ImgPrev20220205 imgUrl={curPreImgUrl}></ImgPrev20220205>}
+            {curPreImgUrl && <ImgPrev20220205 imgUrl={curPreImgUrl} cancel={clearPreImgUrl}></ImgPrev20220205>}
             {downdatasting && <a href={downdatasting} download={downfilename} ref={downloadlink} style={{ display: "none" }}>下载结果</a>}
         </div>
     )

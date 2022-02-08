@@ -4,6 +4,7 @@ import "./ImgPrevStyle.less";
 
 interface PreProps {
     imgUrl: string;
+    cancel: () => void;
 }
 interface AnimateCache {
     style: CSSProperties | { [props: string]: string },
@@ -172,7 +173,11 @@ const ImgPrev20220205: React.FC<PreProps> = props => {
     const mouseleavehandle = () => {
         setHasDowned(false);
     }
+    const closePrevHandle = () => {
+        props.cancel();
+    }
     return <div className="prev-wrapper" >
+        <button className="close-prev" onClick={closePrevHandle}>关闭</button>
         <div className="main-content" ref={contentRef} onMouseLeave={mouseleavehandle}>
             <div className="main-img">
                 <img src={imgUrl} alt="预览图片" ref={imgRef} className="img-item-trans" style={computedStyle.style} onMouseMove={onMoveImg} onMouseDown={onMousedownImg} onMouseUp={mouseupHandle} />
