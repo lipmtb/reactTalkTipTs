@@ -50,7 +50,7 @@ export default function LoadingProgress(props: LoadingProps) {
         <span className="title-text">{children}:{curWidth}%</span>
 
         <div className="bottom-line">
-            <span className="codetext" style={{ width: curWidth + "%" }}> o&#x25ac;&#x25ac;&#x25d9;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x25e4;</span>
+            <span className="codetext" style={{ width: curWidth + "%" }}> o&#x25ac;&#x25ac;&#x25d9;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x2596;&#x25e4;</span>
             {confirmBtn && <Button className="btn-mid" size="small" onClick={clearProgress}>确定</Button>}
         </div>
     </div>;

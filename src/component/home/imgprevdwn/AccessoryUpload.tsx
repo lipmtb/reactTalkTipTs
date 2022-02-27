@@ -116,7 +116,7 @@ export const AccessoryUpload: React.FC<ImgOperProps> = props => {
             formdata.append("username", props.userInfo.userName);
             formdata.append("accessoryType", typeId);
             formdata.append("imgfile", file);
-            console.log("formdata", formdata);
+
             return uploadfile<ResponseAll<{ uploadstate: number }>>(formdata, {
                 headers: {
                     "Content-Type": 'multipart/form-data'
@@ -127,7 +127,7 @@ export const AccessoryUpload: React.FC<ImgOperProps> = props => {
     }
 
     const deleteUploadFileHandle: (id: string) => Promise<AxiosResponse<ResponseAll<{ deleteState: number }>>> = (id: string) => {
-        console.log(id);
+
         return deleteUploadFile<ResponseAll<{ deleteState: number }>>({
             userConfig: props.userInfo,
             file_id: id

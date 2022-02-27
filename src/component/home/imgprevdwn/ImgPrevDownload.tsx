@@ -1,5 +1,5 @@
 
-import React, { useState, useReducer, useMemo, useRef } from 'react';
+import React, { useState, useReducer, useMemo, useRef, useEffect } from 'react';
 import { AccessoryConfig, ResponseAll, AccessoryFile } from "./interface";
 import { isResponseSuccess, downloadFileByAccessoryUrl } from "./networkservice/getAccessoryConfig";
 import JJccModal from "../../common/popUp";
@@ -84,7 +84,7 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
     }
     //选择附件和显示附件
     const selectNewFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("selectNewFileselectNewFile", e.currentTarget.files);
+
         const filelists = e.currentTarget.files;
         setFileItem({
             type: "newFileSelect",
@@ -163,7 +163,7 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                     window.URL.revokeObjectURL(imgurl);
                 }
                 const file = fileItem.fileitem;
-                console.log("delete file", file);
+
                 setImgUrl("");
                 setshowDel(false);
                 setFileItem({
@@ -185,7 +185,7 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                     props.deleteUploadFile(id).then((res: AxiosResponse<ResponseAll<{ deleteState: number }>>) => {
                         if (res.data) {
                             if (res.data.errCode === 0) {
-                                console.log("删除成功", res.data);
+
                                 deletedArr.push(id);
                                 setDeleted([...deletedArr]);
                             } else {
@@ -213,28 +213,57 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
             downloadFileByAccessoryUrl<BlobPart>({
                 accessoryUrl: aFile.accessoryUrl
             }).then((res) => {
-                console.log("下载结果", res.data, typeof res.data);
-                const blob = new Blob([res.data], { type: "application/image" });
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(blob);
-                fileReader.onload = (e: ProgressEvent<FileReader>) => {
-                    if (e.target) {
-                        setdowndatasting(e.target.result as string);
-                        setdownfilename(aFile.accessoryUrl.slice(aFile.accessoryUrl.lastIndexOf("\/")));
-                        downloadlink.current?.click();
-                        setTimeout(() => {
-                            setdowndatasting("")
-                            setdownfilename("")
-                        }, 400);
+                // console.log("下载结果", res.data, typeof res.data);//ArrayBuffer|Blob
+                const blob = new Blob([res.data], { type: "application/image" });//接口BlobPart更适合多情况
+                // const blob:BlobPart = res.data;//接口直接返回Blob
+                // const fileReader = new FileReader();
+                // fileReader.readAsDataURL(blob as Blob);
+                // fileReader.onload = (e: ProgressEvent<FileReader>) => {
+                //     if (e.target) {
+                //         setdowndatasting(e.target.result as string);
+                //         setdownfilename(aFile.accessoryUrl.slice(aFile.accessoryUrl.lastIndexOf("\/")));
+                //         downloadlink.current?.click();
+                //         setTimeout(() => {
+                //             setdowndatasting("")
+                //             setdownfilename("")
+                //         }, 400);
+                //     }
+                // }
+
+                const tempUrl = window.URL.createObjectURL(blob);
+
+                setdowndatasting(tempUrl);
+
+                setdownfilename(aFile.accessoryUrl.slice(aFile.accessoryUrl.lastIndexOf("\/")));
+                downloadlink.current?.click();
+                setTimeout(() => {
+
+                    setdowndatasting("")
+                    if (downdatasting) {
+
+                        window.URL.revokeObjectURL(downdatasting);
                     }
-                }
+                    setdownfilename("")
+                }, 3000);
             })
 
         }
     }
 
-    const clearPreImgUrl=()=>{
+
+    const clearPreImgUrl = () => {
         setCurPreImgUrl("")
+    }
+    const onDropFiles = (e: React.DragEvent<HTMLLIElement>) => {
+        e.stopPropagation();
+        e.preventDefault();
+        console.log(e.dataTransfer.files[0]);
+        const file = e.dataTransfer.files?.[0];
+        setFileItem({
+            type: "newFileSelect",
+            payload: file as File
+        });
+        selectNewFilePre(file);
     }
     return (
         <div className='img-prev-down-wrapper'>
@@ -249,7 +278,7 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                                 <Icon type="minus-square" className='hasupload-delete' onClick={delHasUploaded(hasuploadFile._id)} />
                                 {typeConfig.canPrev ? <span className="prev-accessory" onClick={prevCurrentFile(hasuploadFile.accessoryUrl)}>预览</span> : null}
                                 {typeConfig.canDownload ? <span className="download-accessory" onClick={downloadFile(hasuploadFile)}>下载</span> : null}
-                                {typeConfig.canDownload && <img src={ServerBaseUrl + hasuploadFile.accessoryUrl} alt="图片预览" className="img-prev-item" />}
+                                <img src={ServerBaseUrl + hasuploadFile.accessoryUrl} alt="图片预览" className="img-prev-item" />
                             </label>
                         </a>
 
@@ -257,7 +286,9 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                 })
             }
             {/* 上传 */}
-            <li className='config-item' onMouseLeave={showDelHandle(false)} >
+            <li className='config-item' onMouseLeave={showDelHandle(false)} onDrop={onDropFiles}
+                onDragEnter={(e) => e.preventDefault()}
+                onDragOver={(e) => e.preventDefault()} onDragLeave={(e) => e.preventDefault()}>
 
                 <a href="#" onClick={(e) => e.stopPropagation()} className='link-img'>
                     <label htmlFor={typeConfig.configTypeId + "inputfile"}>
@@ -278,7 +309,9 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                 </a>
 
             </li>
+            {/* 上传进度 */}
             {isUploading && <JJccModal><LoadingProgress loadingState={uploadState} setCurrentUploading={setCurrentUploading}>附件上传中</LoadingProgress></JJccModal>}
+            {/* 图片预览 */}
             {curPreImgUrl && <ImgPrev20220205 imgUrl={curPreImgUrl} cancel={clearPreImgUrl}></ImgPrev20220205>}
             {downdatasting && <a href={downdatasting} download={downfilename} ref={downloadlink} style={{ display: "none" }}>下载结果</a>}
         </div>

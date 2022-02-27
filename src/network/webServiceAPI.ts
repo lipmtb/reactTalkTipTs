@@ -18,6 +18,6 @@ export const accessoryBaseReq = <T>(url: string, req: FormData, config: ReqConfi
 
 export const serviceGet = <T>(url: string) => {
     return baseRequest.get<T>(url,{
-       responseType:"arraybuffer"
+       responseType:"blob"
     });
 }
