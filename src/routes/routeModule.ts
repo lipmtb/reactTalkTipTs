@@ -1,9 +1,12 @@
 
 import React, { lazy } from "react";
+// import { FormComponentProps } from "antd/es/form"
+// import { RouteComponentProps } from "react-router-dom";
 const Talk = lazy(() => import("../views/talk"));
 const Tip = lazy(() => import("../views/tip"));
 const Login = lazy(() => import("../views/login"));
 const Home = lazy(() => import("../views/home"));
+const ServiceMap = lazy(() => import("../views/serviceMap"));
 export type Path = {
     pathname: string;
     state: object;
@@ -11,7 +14,8 @@ export type Path = {
 }
 
 export interface ItRoute {
-    component: React.LazyExoticComponent<React.ComponentType<{ [props: string]: unknown }>>;
+    // component: React.LazyExoticComponent<React.ComponentType<RouteComponentProps|FormComponentProps>>;
+    component: React.LazyExoticComponent<React.ComponentType<any>>;
     exact?: boolean;
     path: string | undefined;
     cache?: boolean;
@@ -22,7 +26,7 @@ export interface ItRoute {
 }
 const getRoutes: () => ItRoute[] = () => {
     return [{
-        component: Home as React.LazyExoticComponent<React.ComponentType>,
+        component: Home,
         exact: true,
         path: "/home",
         key: "myhome",
@@ -33,7 +37,7 @@ const getRoutes: () => ItRoute[] = () => {
             menuId: "1000"
         }
     }, {
-        component: Login as React.LazyExoticComponent<React.ComponentType>,
+        component: Login,
         exact: true,
         path: "/",
         cache: false,
@@ -64,6 +68,17 @@ const getRoutes: () => ItRoute[] = () => {
         meta: {
             id: "tipId",
             menuId: "1102"
+        }
+    }, {
+        component: ServiceMap,
+        exact: true,
+        path: "/map",
+        cache: true,
+        name: "mappage",
+        key: "jjccmap",
+        meta: {
+            id: "mapId",
+            menuId: "map1101"
         }
     }];
 }

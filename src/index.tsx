@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import store from "./jjccredux"
 import { Provider } from "react-redux";
+
 import './index.css';
 
 ReactDOM.render(

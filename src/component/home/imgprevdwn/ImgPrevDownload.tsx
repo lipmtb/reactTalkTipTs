@@ -300,8 +300,8 @@ export const ImgPrevDownload: React.FC<ImgOperProps> = props => {
                         <Button size="small" onClick={() => {
                             uploadFileLoading(typeConfig.configTypeId)
                         }}>上传</Button>
-                        {typeConfig.canPrev && imgurl ? <span className="prev-accessory">预览</span> : null}
-                        {typeConfig.canDownload && imgurl ? <span className="download-accessory">下载</span> : null}
+                        {/* {typeConfig.canPrev && imgurl ? <span className="prev-accessory">预览</span> : null}
+                        {typeConfig.canDownload && imgurl ? <span className="download-accessory">下载</span> : null} */}
                         {imgurl && <img src={imgurl} alt="图片预览" className="img-prev-item"
                             onMouseEnter={showDelHandle(true)}
                         />}
