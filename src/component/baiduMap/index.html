@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>testProps-2022-03-04</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <button onclick="test()">大师傅撒旦</button>
+    </div>
+
+    <script>
+        function test() {
+            const pros1 = new Promise((resolve) => {
+                console.log("props11");
+                resolve(1)
+
+            });
+            pros1.then(function pros1Then233333(res) {
+                console.log("props11*************  res", res);
+            })
+
+            const pros2 = new Promise((resolve) => {
+                console.log("props22");
+                resolve(2)
+
+            });
+            pros2.then(function pros2Then2444444(res) {
+                console.log("props22************  res", res);
+            })
+
+            setTimeout(function timeout8888888888() {
+                console.log("timeout00000000000/////////")
+            })
+
+            requestAnimationFrame(function reqframe66666() {
+                console.log("requestAnimationFrame", document.body.style.backgroundColor = "#ff0");
+            })
+
+        }
+    </script>
+</body>
+
+</html>

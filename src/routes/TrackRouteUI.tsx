@@ -7,7 +7,7 @@ export default function TrackRouteUI(propsEntry: Partial<ItRoute>) {
 
     if (cache) {
         return <Route exact={exact} path={path as string} render={(props: RouteComponentProps) => {
-            console.log("KeepAlive render RouteComponentProps", props);
+            // console.log("KeepAlive render RouteComponentProps", props);
             return <KeepAlive id={name} name={name} when={true}>{Component ? <Component {...props} {...otherProps} /> : null}</KeepAlive>
         }}></Route>
     }
