@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Switch, BrowserRouter, Route } from "react-router-dom";
+import { Switch, BrowserRouter, HashRouter, Route } from "react-router-dom";
 
 
 import { AliveScope } from "react-activation";
@@ -16,7 +16,7 @@ const allRoutes = getRoutes();
 
 export default function AppRoutes() {
     return (
-        <BrowserRouter>
+        <HashRouter>
 
             <AliveScope>
                 <Suspense fallback={<h2>loading23333</h2>}>
@@ -32,6 +32,6 @@ export default function AppRoutes() {
 
                 </Suspense>
             </AliveScope>
-        </BrowserRouter>
+        </HashRouter>
     )
 }

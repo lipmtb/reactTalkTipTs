@@ -7,6 +7,10 @@ const Tip = lazy(() => import("../views/tip"));
 const Login = lazy(() => import("../views/login"));
 const Home = lazy(() => import("../views/home"));
 const ServiceMap = lazy(() => import("../views/serviceMap"));
+const LoadingGamePage = lazy(() => import("../views/loadingGamePage"));
+const LoadingPage = lazy(() => import("../views/LoadingPage"));
+const MoreHomePtt = lazy(() => import("../views/MoreHomePtt"));
+
 export type Path = {
     pathname: string;
     state: object;
@@ -27,7 +31,7 @@ export interface ItRoute {
 const getRoutes: () => ItRoute[] = () => {
     return [{
         component: Home,
-        exact: true,
+        exact: false,
         path: "/home",
         key: "myhome",
         cache: false,
@@ -72,13 +76,46 @@ const getRoutes: () => ItRoute[] = () => {
     }, {
         component: ServiceMap,
         exact: true,
-        path: "/map",
+        path: "/map/:mapid",
         cache: true,
         name: "mappage",
         key: "jjccmap",
         meta: {
             id: "mapId",
             menuId: "map1101"
+        }
+    }, {
+        component: LoadingGamePage,
+        exact: true,
+        path: "/loadingGame",
+        cache: true,
+        name: "loadinggame123",
+        key: "loadingjjccgame",
+        meta: {
+            id: "loadinggame040401",
+            menuId: "loadinggamemenuid040401"
+        }
+    }, {
+        component: LoadingPage,
+        exact: true,
+        path: "/loadingArea",
+        cache: true,
+        name: "loadingArea2333",
+        key: "loadingAreaCpn",
+        meta: {
+            id: "loadingArea23330501",
+            menuId: "menu-loadingArea23330501"
+        }
+    }, {
+        component: MoreHomePtt,
+        exact: true,
+        path: "/pttMore",
+        cache: true,
+        name: "pptPopupMore",
+        key: "pptPopupMore050801",
+        meta: {
+            id: "pptPopupMore050801",
+            menuId: "menu-pptpoupMore050801"
         }
     }];
 }

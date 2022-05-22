@@ -1,3 +1,22 @@
 .search-wrapper {
-    display: inline-block;
+    display : inline-block;
+    position: relative;
+    z-index : 10;
+
+    ul.relative-lists {
+        position        : absolute;
+        left            : 0;
+        top             : 100%;
+        background-color: #ddd;
+        opacity         : .9;
+        cursor: pointer;
+        list-style: none;
+        padding-left:4px;
+        li.addr-item{
+            margin:4px 0;
+            &:hover{
+                background-color: #fff;
+            }
+        }
+    }
 }

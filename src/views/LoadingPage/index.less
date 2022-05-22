@@ -1,0 +1,35 @@
+@import "../../assets/lessMixins/mixins.less";
+
+.clearfix2 {
+
+
+    &::after {
+        content: "";
+        display: block;
+        clear  : both;
+    }
+}
+
+.loading-cpn-wrapper {
+    .loading-page-title {
+        text-align      : center;
+        background-image: -webkit-linear-gradient(45deg, #ff0, #f00, #0f0);
+    }
+
+    .loading-show-content {
+        width : 98vw;
+        margin: 10px auto;
+
+        ul.loading-list {
+            &:extend(.clearfix all);
+
+            li.loading-list-item-show {
+                position  : relative;
+                width     : 200px;
+                height    : 200px;
+                box-shadow: 1px 1px 15px #ccc;
+                float     : left;
+            }
+        }
+    }
+}

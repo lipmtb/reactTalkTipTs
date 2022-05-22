@@ -4,7 +4,7 @@ import store from "../jjccredux";
 import historyHook from "../routes/historyHook";
 import { clearLoginAction } from "../jjccredux/actions/loginAction";
 import { Modal } from "antd";
-export const ServerBaseUrl = "http://182.61.150.162:208/";
+export const ServerBaseUrl = "http://localhost:82";
 const baseAxiosIns = axios.create({
     baseURL: ServerBaseUrl,
     timeout: 5000

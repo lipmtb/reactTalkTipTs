@@ -1,0 +1,131 @@
+.loading-game-container {
+    background-color: #69ff55;
+    height          : 100vh;
+
+    .main-content {
+        position: fixed;
+        left    : 0;
+        right   : 0;
+        top     : 50%;
+
+        transform      : translateY(-50%);
+        min-height     : 160px;
+        display        : flex;
+        justify-content: space-around;
+
+        .main-text {
+            text-align: center;
+
+            h1,
+            h4 {
+                color  : #fff;
+                margin : 0;
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+        }
+
+        .main-monster {
+            width           : 110px;
+            height          : 100px;
+            background-color: #e55A54;
+            border-radius   : 20px/20px;
+            position        : relative;
+            animation: jumpAnimation 0.8s infinite  alternate ;
+            &::before,
+            &::after {
+                content         : "";
+                position        : absolute;
+                width           : 22px;
+                height          : 8px;
+                background-color: #fff;
+                border-radius   : 10px;
+            }
+
+            &::before {
+                top      : -8px;
+                left     : 50%;
+                transform: translateX(-80%) rotate(30deg)
+            }
+
+            &::after {
+                top      : -8px;
+                left     : 50%;
+                transform: translateX(-18%) rotate(-30deg)
+            }
+
+            .eye {
+                width           : 50px;
+                height          : 50px;
+                background-color: #fff;
+                padding         : 4px;
+                margin          : 18px auto 8px;
+                border-radius   : 50%;
+                box-shadow      : 1px 1px 10px #fff;
+                overflow        : hidden;
+
+                .eyeball {
+                    width           : 50%;
+                    height          : 50%;
+                    background-color: #000;
+                    border-radius   : 50%;
+                    padding         : 10px 0;
+                    transform-origin: 100% 100%;
+                    // animation: name duration timing-function delay iteration-count direction fill-mode;
+
+                }
+
+                .animate-eyeball {
+                    --current-deg: 0deg;
+                    animation    : eyeBallAnimation 5s infinite linear;
+                }
+            }
+
+            .mouth {
+                width           : 33px;
+                height          : 12px;
+                background-color: #fff;
+                margin          : 0px auto;
+                border-radius   : 10px;
+            }
+        }
+    }
+}
+
+@keyframes eyeBallAnimation {
+    0% {
+        transform: rotate(var(--current-deg));
+    }
+
+
+    100% {
+        transform    : rotate(calc(var(--current-deg) + 360deg));
+        --current-deg: calc(var(--current-deg) + 360deg);
+    }
+}
+
+@keyframes jumpAnimation{
+    0%{
+      transform: translate3d(0,0,0);   
+      box-shadow: none;   
+    }
+    10%{
+        transform: translate3d(0,0,0);    
+        box-shadow: none;   
+    }
+
+    90%{
+        transform: translate3d(0,-100px,100px);   
+        box-shadow: 0px 100px 20px  rgba(0, 0, 0, 0.2);
+    }
+
+    100%{
+        transform: translate3d(0,-100px,100px);    
+        box-shadow: 0px 100px 20px  rgba(0, 0, 0, 0.2);
+    }
+}
+

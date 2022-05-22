@@ -1,0 +1,68 @@
+.more-home-ppt {
+    background-color: #38f357;
+
+    .list-header {
+        display        : flex;
+        justify-content: space-around;
+        align-items    : center;
+
+        .more-ppt-text {
+            color   : #8f9aff;
+            position: relative;
+
+            &::after {
+                content : ">>";
+                position: absolute;
+                right   : -30%;
+                top     : 0;
+                bottom  : 0;
+            }
+        }
+    }
+}
+
+.more-popup-wrapper {
+    position           : fixed;
+    left               : 0;
+    right              : 0;
+    top                : 0;
+    bottom             : 0;
+    margin             : auto;
+    background-color   : #f00;
+    height             : 0;
+    width              : 0;
+    // transform       : rotate3d(1, 1, 0, 90deg);
+
+    &.runIn {
+        animation          : runInAnmation 1000ms ease-in;
+        animation-direction: normal;
+        animation-fill-mode: forwards;
+
+    }
+}
+
+@keyframes runInAnmation {
+    0% {
+        width    : 5%;
+        height   : 5%;
+        transform: rotate3d(1, 0, 1, 0deg);
+    }
+
+    10% {
+        width : 8%;
+        height: 8%;
+        transform: rotate3d(1, 0, 1, 2deg);
+    }
+
+    90% {
+        width : 95%;
+        height: 95%;
+        transform: rotate3d(1, 0, 1, 300deg);
+    }
+
+    100% {
+        width : 100%;
+        height: 100%;
+        transform: rotate3d(1, 0, 1, 360deg);
+    }
+}
